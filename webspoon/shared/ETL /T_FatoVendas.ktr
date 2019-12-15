@@ -943,6 +943,63 @@ INNER JOIN "Produtos" AS prod ON dp."CodigoDoProduto" = prod."CodigoDoProduto" <
     </GUI>
   </step>
   <step>
+    <name>Produto - Dimension lookup </name>
+    <type>DimensionLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <schema/>
+    <table>dim_produto</table>
+    <connection>Northwind Data Mart</connection>
+    <commit>100</commit>
+    <update>N</update>
+    <fields>
+      <key>
+        <name>Via</name>
+        <lookup>prod_cod</lookup>
+      </key>
+      <date>
+        <name>DataDoPedido</name>
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <return>
+        <name>prod_sk</name>
+        <rename/>
+        <creation_method>tablemax</creation_method>
+        <use_autoinc>N</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence/>
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>N</use_start_date_alternative>
+    <start_date_alternative>none</start_date_alternative>
+    <start_date_field_name/>
+    <useBatch>N</useBatch>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Tempo - Entrega lookup</name>
     <type>DimensionLookup</type>
     <description/>
@@ -1224,63 +1281,6 @@ INNER JOIN "Produtos" AS prod ON dp."CodigoDoProduto" = prod."CodigoDoProduto" <
     <GUI>
       <xloc>400</xloc>
       <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Produto - Dimension lookup </name>
-    <type>DimensionLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <schema/>
-    <table>dim_produto</table>
-    <connection>Northwind Data Mart</connection>
-    <commit>100</commit>
-    <update>N</update>
-    <fields>
-      <key>
-        <name>Via</name>
-        <lookup>prod_cod</lookup>
-      </key>
-      <date>
-        <name>DataDoPedido</name>
-        <from>date_from</from>
-        <to>date_to</to>
-      </date>
-      <return>
-        <name>prod_sk</name>
-        <rename/>
-        <creation_method>tablemax</creation_method>
-        <use_autoinc>N</use_autoinc>
-        <version>version</version>
-      </return>
-    </fields>
-    <sequence/>
-    <min_year>1900</min_year>
-    <max_year>2199</max_year>
-    <cache_size>5000</cache_size>
-    <preload_cache>N</preload_cache>
-    <use_start_date_alternative>N</use_start_date_alternative>
-    <start_date_alternative>none</start_date_alternative>
-    <start_date_field_name/>
-    <useBatch>N</useBatch>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

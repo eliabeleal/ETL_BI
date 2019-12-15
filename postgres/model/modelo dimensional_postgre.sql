@@ -8,187 +8,225 @@ CREATE DATABASE "DM_Northwind"
 -- -----------------------------------------------------
 -- Schema public
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS "public" CASCADE;
+DROP SCHEMA IF EXISTS "public"
+CASCADE;
 
 -- -----------------------------------------------------
 -- Schema public
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS  "public"  ;
+CREATE SCHEMA
+IF NOT EXISTS  "public"  ;
 
 -- -----------------------------------------------------
 -- Table "public"."DIM_CLIENTE"
 -- -----------------------------------------------------
-CREATE TABLE  "public"."DIM_CLIENTE" (
-  "cli_sk" INT NOT NULL,
-  "cli_cod" VARCHAR(5) NOT NULL,
-  "cli_empresa" VARCHAR(45) NOT NULL,
-  "cli_contato" VARCHAR(45) NULL,
-  "cli_telefone" VARCHAR(45) NULL,
-  "cli_cidade" VARCHAR(45) NOT NULL,
-  "cli_país" VARCHAR(45) NULL,
-  "date_to" TIMESTAMP NOT NULL,
-  "date_from" TIMESTAMP NOT NULL,
-  "version" INT NOT NULL,
-  PRIMARY KEY ("cli_sk"));
+CREATE TABLE "public"."dim_cliente"
+(
+  "cli_sk" BIGINT,
+  "version" INTEGER,
+  "date_from" TIMESTAMP,
+  "date_to" TIMESTAMP,
+  "cli_cod" VARCHAR(5),
+  "cli_empresa" VARCHAR(40),
+  "cli_contato" VARCHAR(30),
+  "cli_telefone" VARCHAR(24),
+  "cli_cidade" VARCHAR(15),
+  "cli_pais" VARCHAR(15),
+  PRIMARY KEY ("cli_sk")
+);
+CREATE INDEX idx_dim_cliente_lookup ON dim_cliente(cli_cod);
+CREATE INDEX idx_dim_cliente_tk ON dim_cliente(cli_sk);
+CREATE SEQUENCE cli_sk_seq START WITH 1 INCREMENT BY 1;
 
 
 -- -----------------------------------------------------
 -- Table "public"."DIM_VENDEDOR"
 -- -----------------------------------------------------
-CREATE TABLE  "public"."DIM_VENDEDOR" (
-  "ven_sk" SERIAL NOT NULL,
-  "ven_cod" INT NOT NULL,
-  "ven_nomeCompleto" VARCHAR(45) NOT NULL,
-  "ven_cargo" VARCHAR(45) NOT NULL,
-  "ven_dataDeContrato" DATE NOT NULL,
-  "ven_cidade" VARCHAR(45) NOT NULL,
-  "ven_país" VARCHAR(45) NULL,
-  "ven_supervisor" VARCHAR(45) NOT NULL,
-  "date_to" TIMESTAMP NOT NULL,
-  "date_from" TIMESTAMP NOT NULL,
-  "version" INT NOT NULL,
-  PRIMARY KEY ("ven_sk"));
+CREATE TABLE "public"."dim_vendedor"
+(
+  "ven_sk" BIGINT,
+  "ven_cod" INTEGER,
+  "ven_nome" TEXT,
+  "ven_cargo" VARCHAR(30),
+  "ven_datacontratacao" TIMESTAMP,
+  "ven_cidade" VARCHAR(15),
+  "ven_pais" VARCHAR(15),
+  "ven_supervisor" INTEGER,
+  "date_to" TIMESTAMP,
+  "date_from" TIMESTAMP,
+  "version" INTEGER,
+  PRIMARY KEY ("ven_sk")
+);
+CREATE INDEX idx_dim_vendedor_lookup ON dim_vendedor(ven_cod);
+CREATE INDEX idx_dim_vendedor_tk ON dim_vendedor(ven_sk);
+CREATE SEQUENCE ven_sk_seq START WITH 1 INCREMENT BY 1;
 
 -- -----------------------------------------------------
 -- Table "public"."DIM_TRANSPORTADORA"
 -- -----------------------------------------------------
-CREATE TABLE  "public"."DIM_TRANSPORTADORA" (
-  "tran_sk" INT NOT NULL,
-  "tran_cod" INT NOT NULL,
-  "tran_nome" VARCHAR(45) NOT NULL,
-  "tran_telefone" VARCHAR(45) NOT NULL,
-  "date_to" TIMESTAMP NOT NULL,
-  "date_from" TIMESTAMP NOT NULL,
-  "version" INT NOT NULL,
-  PRIMARY KEY ("tran_sk"));
+CREATE TABLE "public"."dim_transportadora"
+(
+  "tran_sk" BIGINT,
+  "tran_cod" INTEGER,
+  "tran_nome" VARCHAR(40),
+  "tran_telefone" VARCHAR(24),
+  "date_to" TIMESTAMP,
+  "date_from" TIMESTAMP,
+  "version" INTEGER,
+  PRIMARY KEY ("tran_sk")
+);
+CREATE INDEX idx_dim_transportadora_lookup ON dim_transportadora(tran_cod);
+CREATE INDEX idx_dim_transportadora_tk ON dim_transportadora(tran_sk);
+CREATE SEQUENCE tran_sk_seq START WITH 1 INCREMENT BY 1;
 
 
 -- -----------------------------------------------------
 -- Table "public"."DIM_PRODUTO"
 -- -----------------------------------------------------
-CREATE TABLE  "public"."DIM_PRODUTO" (
-  "prod_sk" INT NOT NULL,
-  "prod_cod" INT NOT NULL,
-  "prod_nome" VARCHAR(45) NOT NULL,
-  "prod_fornecedor" VARCHAR(45) NOT NULL,
-  "prod_categoria" VARCHAR(45) NOT NULL,
-  "prod_precoUnit" INT NOT NULL,
-  "prod_precisaReposicao" BOOLEAN NULL,
-  "date_to" TIMESTAMP NOT NULL,
-  "date_from" TIMESTAMP NOT NULL,
-  "version" INT NOT NULL,
-  PRIMARY KEY ("prod_sk"));
+CREATE TABLE "public"."dim_produto"
+(
+  "prod_sk" BIGINT,
+  "prod_cod" INTEGER,
+  "prod_nome" VARCHAR(40),
+  "prod_fornecedor" INTEGER,
+  "prod_categoria" INTEGER,
+  "prod_precounitario" DOUBLE PRECISION,
+  "prod_precisareposicao" BOOLEAN,
+  "date_to" TIMESTAMP,
+  "date_from" TIMESTAMP,
+  "version" INTEGER,
+  PRIMARY KEY ("prod_sk")
+);
+CREATE INDEX idx_dim_produto_lookup ON dim_produto(prod_cod);
+CREATE INDEX idx_dim_produto_tk ON dim_produto(prod_sk);
+CREATE SEQUENCE prod_sk_seq START WITH 1 INCREMENT BY 1;
 
 
 -- -----------------------------------------------------
 -- Table "public"."DIM_TEMPO_PEDIDO"
 -- -----------------------------------------------------
-CREATE TABLE  "public"."DIM_TEMPO_PEDIDO" (
-  "tpd_sk" INT NOT NULL,
-  "tpd_data" DATE NULL,
-  "tpd_ano" INTERVAL YEAR NULL,
-  "tpd_mes" VARCHAR(45) NULL,
-  "tpd_dia" VARCHAR(45) NULL,
-  "tpd_diasemana" VARCHAR(45) NULL,
-  "tpd_trimestre" VARCHAR(45) NULL,
-  "tpd_semanaano" VARCHAR(45) NULL,
-  "date_to" TIMESTAMP NOT NULL,
-  "date_from" TIMESTAMP NOT NULL,
-  "version" INT NOT NULL,
-  PRIMARY KEY ("tpd_sk"));
+CREATE TABLE "public"."dim_tempo_pedido"
+(
+  "tpd_sk" BIGINT,
+  "tpd_data" TIMESTAMP,
+  "tpd_ano" SMALLINT,
+  "tpd_mes" SMALLINT,
+  "tpd_dia" SMALLINT,
+  "tpd_diasemana" SMALLINT,
+  "tpd_trimestre" SMALLINT,
+  "tpd_semanaano" SMALLINT,
+  "date_to" TIMESTAMP,
+  "date_from" TIMESTAMP,
+  "version" INTEGER,
+  PRIMARY KEY ("tpd_sk")
+);
+CREATE INDEX idx_dim_tempo_pedido_lookup ON dim_tempo_pedido(tpd_data);
+CREATE INDEX idx_dim_tempo_pedido_tk ON dim_tempo_pedido(tpd_sk);
+CREATE SEQUENCE tpd_sk_seq START WITH 1 INCREMENT BY 1;
 
 
 -- -----------------------------------------------------
 -- Table "public"."DIM_TEMPO_ENTREGA"
 -- -----------------------------------------------------
-CREATE TABLE  "public"."DIM_TEMPO_ENTREGA" (
-  "tet_sk" INT NOT NULL,
-  "tet_data" DATE NULL,
-  "tet_ano" INTERVAL YEAR NULL,
-  "tet_mes" VARCHAR(45) NULL,
-  "tet_dia" VARCHAR(45) NULL,
-  "tet_diasemana" VARCHAR(45) NULL,
-  "tet_trimestre" VARCHAR(45) NULL,
-  "tet_semanaano" VARCHAR(45) NULL,
-  "date_to" TIMESTAMP NOT NULL,
-  "date_from" TIMESTAMP NOT NULL,
-  "version" INT NOT NULL,
-  PRIMARY KEY ("tet_sk"));
-
+CREATE TABLE "public"."dim_tempo_entrega"
+(
+  "tet_sk" BIGINT,
+  "tet_data" TIMESTAMP,
+  "tet_ano" SMALLINT,
+  "tet_mes" SMALLINT,
+  "tet_dia" SMALLINT,
+  "tet_diasemana" SMALLINT,
+  "tet_trimestre" SMALLINT,
+  "tet_semanaano" SMALLINT,
+  "date_to" TIMESTAMP,
+  "date_from" TIMESTAMP,
+  "version" INTEGER,
+  PRIMARY KEY ("tet_sk")
+);
+CREATE INDEX "idx_dim_tempo_entrega_lookup" ON dim_tempo_entrega("tet_data");
+CREATE INDEX "idx_dim_tempo_entrega_tk" ON dim_tempo_entrega("tet_sk");
+CREATE SEQUENCE "tet_sk_seq" START WITH 1 INCREMENT BY 1;
 
 -- -----------------------------------------------------
 -- Table "public"."DIM_TEMPO_EXPEDIÇÃO"
 -- -----------------------------------------------------
-CREATE TABLE  "public"."DIM_TEMPO_EXPEDIÇÃO" (
-  "tep_sk" INT NOT NULL,
+CREATE TABLE "public"."dim_tempo_expedicao"
+(
+  "tep_sk" BIGINT,
   "tep_data" DATE NULL,
-  "tep_ano" INTERVAL YEAR NULL,
-  "tep_mes" VARCHAR(45) NULL,
-  "tep_dia" VARCHAR(45) NULL,
-  "tep_diasemana" VARCHAR(45) NULL,
-  "tep_trimestre" VARCHAR(45) NULL,
-  "tep_semanaano" VARCHAR(45) NULL,
-  "date_to" TIMESTAMP NOT NULL,
-  "date_from" TIMESTAMP NOT NULL,
-  "version" INT NOT NULL,
-  PRIMARY KEY ("tep_sk"));
+  "tep_ano" SMALLINT,
+  "tep_mes" SMALLINT,
+  "tep_dia" SMALLINT,
+  "tep_diasemana" SMALLINT,
+  "tep_trimestre" SMALLINT,
+  "tep_semanaano" SMALLINT,
+  "date_to" TIMESTAMP,
+  "date_from" TIMESTAMP,
+  "version" INTEGER,
+  PRIMARY KEY ("tep_sk")
+);
+CREATE INDEX idx_dim_tempo_expedicao_lookup ON dim_tempo_expedicao(tep_data);
+CREATE INDEX idx_dim_tempo_expedicao_tk ON dim_tempo_expedicao(tep_sk);
+CREATE SEQUENCE tep_sk_seq START WITH 1 INCREMENT BY 1;
 
 
 -- -----------------------------------------------------
 -- Table "public"."FATO_PEDIDO"
 -- -----------------------------------------------------
-CREATE TABLE  "public"."FATO_PEDIDO" (
-  "fat_cli_sk" INT NOT NULL,
-  "fat_fun_sk" INT NOT NULL,
-  "fat_tpd_sk" INT NOT NULL,
-  "fat_tet_sk" INT NOT NULL,
-  "fat_tep_sk" INT NOT NULL,
-  "fat_tran_sk" INT NOT NULL,
-  "fat_prod_sk" INT NOT NULL,
-  "fat_numPedido" INT NOT NULL,
-  "fat_freteItem" INT NOT NULL,
-  "fat_paisDestino" VARCHAR(45) NOT NULL,
-  "fat_precoUnit" INT NOT NULL,
-  "fat_divergenciaPrecoVenda" BOOLEAN NULL,
-  "fat_diasParaEntrega" INT NULL,
-  "fat_diasParaExpedicao" INT NULL,
-  "fat_descontoR$" INT NULL,
-  "fat_desconto%" DOUBLE PRECISION NULL,
-  "fat_valorVenda" INT NULL,
+CREATE TABLE "public"."fato_vendas"
+(
+  "fat_cli_sk" INTEGER,
+  "fat_fun_sk" INTEGER,
+  "fat_tpd_sk" INTEGER,
+  "fat_tet_sk" INTEGER,
+  "fat_tep_sk" INTEGER,
+  "fat_tran_sk" INTEGER,
+  "fat_prod_sk" INTEGER,
+  "fat_numpedido" INTEGER,
+  "fat_freteitem" NUMERIC(16, 2),
+  "fat_paisdestino" VARCHAR(15),
+  "fat_precounit" INT NOT NULL,
+  "fat_divergenciaprecovenda" DOUBLE PRECISION,
+  "fat_diasparaentrega" INTEGER,
+  "fat_diasparaexpedicao" INTEGER,
+  "fat_descontor$" NUMERIC(16, 2),
+  "fat_desconto%" DOUBLE PRECISION,
+  "fat_valorvenda" DOUBLE PRECISION,
   CONSTRAINT "fk_Facto_Cliente"
-    FOREIGN KEY ("fk_cli_cod")
-    REFERENCES "public"."DIM_CLIENTE" ("cli_sk")
+    FOREIGN KEY ("fat_cli_sk")
+    REFERENCES "public"."dim_cliente" ("cli_sk")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT "fk_Facto_Vendedor"
-    FOREIGN KEY ("fk_fun_cod")
-    REFERENCES "public"."DIM_VENDEDOR" ("ven_sk")
+    FOREIGN KEY ("fat_fun_sk")
+    REFERENCES "public"."dim_vendedor" ("ven_sk")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT "fk_Facto_Transportadora"
-    FOREIGN KEY ("fk_tran_sk")
-    REFERENCES "public"."DIM_TRANSPORTADORA" ("tran_sk")
+    FOREIGN KEY ("fat_tran_sk")
+    REFERENCES "public"."dim_transportadora" ("tran_sk")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT "fk_Facto_Produto"
-    FOREIGN KEY ("fk_prod_sk")
-    REFERENCES "public"."DIM_PRODUTO" ("prod_sk")
+    FOREIGN KEY ("fat_prod_sk")
+    REFERENCES "public"."dim_produto" ("prod_sk")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT "fk_Facto_Date_Pedido"
-    FOREIGN KEY ("fk_date_pedido")
-    REFERENCES "public"."DIM_TEMPO_PEDIDO" ("tpd_sk")
+    FOREIGN KEY ("fat_tpd_sk")
+    REFERENCES "public"."dim_tempo_pedido" ("tpd_sk")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT "fk_Facto_Date_Entrega"
-    FOREIGN KEY ("fk_date_entrega")
-    REFERENCES "public"."DIM_TEMPO_ENTREGA" ("tet_sk")
+    FOREIGN KEY ("fat_tet_sk")
+    REFERENCES "public"."dim_tempo_entrega" ("tet_sk")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT "fk_Facto_Date_Expedição"
-    FOREIGN KEY ("fk_date_expedição")
-    REFERENCES "public"."DIM_TEMPO_EXPEDIÇÃO" ("tep_sk")
+  CONSTRAINT "fk_Facto_Date_Expedicao"
+    FOREIGN KEY ("fat_tep_sk")
+    REFERENCES "public"."dim_tempo_expedicao" ("tep_sk")
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION
+);
 
 
