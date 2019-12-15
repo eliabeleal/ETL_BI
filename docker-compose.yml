@@ -1,0 +1,35 @@
+version: '2'
+services:
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
+  db_postgres:
+    build: ./postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+
+  webspoon:
+    build: ./webspoon
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./webspoon/shared:/home/tomcat/shared
+      - kettle:/home/tomcat/.kettle
+      - pentaho:/home/tomcat/.pentaho
+    environment:
+      - "JAVA_OPTS=-Xms1024m -Xmx2048m"
+    links:
+      - db_postgres
+
+volumes:
+  kettle:
+  pentaho: 
