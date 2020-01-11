@@ -613,17 +613,17 @@ FROM "Clientes";
       <field>
         <name>NomeDaEmpresa</name>
         <lookup>cli_empresa</lookup>
-        <update>Insert</update>
+        <update>Update</update>
       </field>
       <field>
         <name>NomeDoContato</name>
         <lookup>cli_contato</lookup>
-        <update>Insert</update>
+        <update>Update</update>
       </field>
       <field>
         <name>Telefone</name>
         <lookup>cli_telefone</lookup>
-        <update>Insert</update>
+        <update>Update</update>
       </field>
       <field>
         <name>Cidade</name>
