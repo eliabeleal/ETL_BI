@@ -574,22 +574,27 @@
       <field>
         <name>NomeDoProduto</name>
         <lookup>prod_nome</lookup>
-        <update>Insert</update>
+        <update>Update</update>
       </field>
       <field>
         <name>CodigoDoFornecedor</name>
         <lookup>prod_fornecedor</lookup>
-        <update>Insert</update>
+        <update>Update</update>
       </field>
       <field>
         <name>CodigoDaCategoria</name>
         <lookup>prod_categoria</lookup>
-        <update>Insert</update>
+        <update>Update</update>
       </field>
       <field>
         <name>PrecoUnitario</name>
         <lookup>prod_precounitario</lookup>
-        <update>Insert</update>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>PrecisaReposicao</name>
+        <lookup>prod_precisareposicao</lookup>
+        <update>Update</update>
       </field>
       <field>
         <name>PrecisaReposicao</name>
@@ -622,8 +627,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
-      <yloc>304</yloc>
+      <xloc>576</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -664,8 +669,8 @@ FROM "Produtos"</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>304</yloc>
+      <xloc>256</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

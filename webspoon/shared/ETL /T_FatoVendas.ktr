@@ -544,16 +544,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Pedidos / Detalhes de Pedido</from>
-      <to>If field value is null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>If field value is null</from>
-      <to>Cliente - Dimension lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Cliente - Dimension lookup</from>
       <to>Vendedor - Dimension lookup</to>
       <enabled>Y</enabled>
@@ -581,6 +571,31 @@
     <hop>
       <from>Produto - Dimension lookup </from>
       <to>Fato Vendas</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Pedidos / Detalhes de Pedido</from>
+      <to>If field value is null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Cliente - Dimension lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>If field value is null</from>
+      <to>Sort pedidos por Pais</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Paises ISO</from>
+      <to>Sort csv por Pais</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort pedidos por Pais</from>
+      <to>Dummy (do nothing)</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -636,8 +651,33 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>336</yloc>
+      <xloc>400</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -748,8 +788,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1376</xloc>
-      <yloc>304</yloc>
+      <xloc>1168</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -884,8 +924,93 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>80</xloc>
       <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Paises ISO</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <filename>/home/tomcat/shared/paises.csv</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>Y</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>Y</newline_possible>
+    <format>mixed</format>
+    <encoding/>
+    <fields>
+      <field>
+        <name>País</name>
+        <type>String</type>
+        <format/>
+        <currency>¤</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>22</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Capital</name>
+        <type>String</type>
+        <format/>
+        <currency>¤</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>19</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Código ISO (3 letras)</name>
+        <type>String</type>
+        <format/>
+        <currency>¤</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>3</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Código ISO (2 letras)</name>
+        <type>String</type>
+        <format/>
+        <currency>¤</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>2</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>32</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -916,8 +1041,8 @@
         (prod."PrecoUnitario"::money::numeric::float8 - dp."PrecoUnitario") AS "divergenciaPrecoVenda",
         (ped."DataDeEntrega" - ped."DataDoPedido") AS "diasParaEntrega",
         (ped."DataDeEnvio" - ped."DataDoPedido") AS "diasParaExpedicao",
-        dp."Desconto" AS "descontoR$",
-        ((dp."Desconto"/dp."PrecoUnitario") * 100.0) AS "desconto%",
+        dp."Desconto" AS "desconto%",
+        (dp."Desconto" * dp."PrecoUnitario") AS "descontoR$",
         (dp."PrecoUnitario" * dp."Quantidade" - dp."Desconto") AS "valorVenda"
 
 FROM "Pedidos" AS ped 
@@ -937,8 +1062,8 @@ INNER JOIN "Produtos" AS prod ON dp."CodigoDoProduto" = prod."CodigoDoProduto" <
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>96</yloc>
+      <xloc>16</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -960,7 +1085,7 @@ INNER JOIN "Produtos" AS prod ON dp."CodigoDoProduto" = prod."CodigoDoProduto" <
     <update>N</update>
     <fields>
       <key>
-        <name>Via</name>
+        <name>CodigoDoProduto</name>
         <lookup>prod_cod</lookup>
       </key>
       <date>
@@ -996,6 +1121,90 @@ INNER JOIN "Produtos" AS prod ON dp."CodigoDoProduto" = prod."CodigoDoProduto" <
     <GUI>
       <xloc>1024</xloc>
       <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort csv por Pais</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>País</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort pedidos por Pais</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>PaisDeDestino</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1280,7 +1489,7 @@ INNER JOIN "Produtos" AS prod ON dp."CodigoDoProduto" = prod."CodigoDoProduto" <
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>336</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
