@@ -594,11 +594,6 @@
       <field>
         <name>PrecisaReposicao</name>
         <lookup>prod_precisareposicao</lookup>
-        <update>Update</update>
-      </field>
-      <field>
-        <name>PrecisaReposicao</name>
-        <lookup>prod_precisareposicao</lookup>
         <update>Insert</update>
       </field>
       <return>
