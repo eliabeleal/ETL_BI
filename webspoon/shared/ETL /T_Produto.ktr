@@ -594,7 +594,7 @@
       <field>
         <name>PrecisaReposicao</name>
         <lookup>prod_precisareposicao</lookup>
-        <update>Update</update>
+        <update>Insert</update>
       </field>
       <return>
         <name>prod_sk</name>

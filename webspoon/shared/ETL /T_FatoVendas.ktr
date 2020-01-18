@@ -651,8 +651,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>352</yloc>
+      <xloc>544</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -676,8 +676,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
-      <yloc>352</yloc>
+      <xloc>288</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1374,7 +1374,7 @@ INNER JOIN "Produtos" AS prod ON dp."CodigoDoProduto" = prod."CodigoDoProduto" <
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
+      <xloc>528</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
