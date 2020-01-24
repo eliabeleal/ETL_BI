@@ -573,12 +573,12 @@
       <field>
         <name>NomeDaEmpresa</name>
         <lookup>tran_nome</lookup>
-        <update>Insert</update>
+        <update>Update</update>
       </field>
       <field>
         <name>Telefone</name>
         <lookup>tran_telefone</lookup>
-        <update>Insert</update>
+        <update>Update</update>
       </field>
       <return>
         <name>tran_sk</name>

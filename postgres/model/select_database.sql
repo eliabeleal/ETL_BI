@@ -28,8 +28,8 @@ SELECT
         (prod."PrecoUnitario"::money::numeric::float8 - dp."PrecoUnitario") AS "divergenciaPrecoVenda",
         (ped."DataDeEntrega" - ped."DataDoPedido") AS "diasParaEntrega",
         (ped."DataDeEnvio" - ped."DataDoPedido") AS "diasParaExpedicao",
-        dp."Desconto" AS "descontoR$",
-        ((dp."Desconto"/dp."PrecoUnitario") * 100.0) AS "desconto%",
+        dp."Desconto" AS "desconto%",
+        (dp."Desconto"*dp."PrecoUnitario") AS "descontoR$",
         (dp."PrecoUnitario" * dp."Quantidade" - dp."Desconto") AS "valorVenda"
 
 FROM "Pedidos" AS ped 
