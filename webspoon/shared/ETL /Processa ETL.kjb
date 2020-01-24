@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
   <name>Processa ETL</name>
-  <description/>
-  <extended_description/>
-  <job_version/>
+  <description />
+  <extended_description />
+  <job_version />
   <directory>/</directory>
   <created_user>-</created_user>
   <created_date>2017/03/22 08:46:43.721</created_date>
@@ -14,12 +14,12 @@
   <slaveservers>
     </slaveservers>
   <job-log-table>
-    <connection/>
-    <schema/>
-    <table/>
-    <size_limit_lines/>
-    <interval/>
-    <timeout_days/>
+    <connection />
+    <schema />
+    <table />
+    <size_limit_lines />
+    <interval />
+    <timeout_days />
     <field>
       <id>ID_JOB</id>
       <enabled>Y</enabled>
@@ -127,10 +127,10 @@
     </field>
   </job-log-table>
   <jobentry-log-table>
-    <connection/>
-    <schema/>
-    <table/>
-    <timeout_days/>
+    <connection />
+    <schema />
+    <table />
+    <timeout_days />
     <field>
       <id>ID_BATCH</id>
       <enabled>Y</enabled>
@@ -218,10 +218,10 @@
     </field>
   </jobentry-log-table>
   <channel-log-table>
-    <connection/>
-    <schema/>
-    <table/>
-    <timeout_days/>
+    <connection />
+    <schema />
+    <table />
+    <timeout_days />
     <field>
       <id>ID_BATCH</id>
       <enabled>Y</enabled>
@@ -284,13 +284,13 @@
     </field>
   </channel-log-table>
   <pass_batchid>N</pass_batchid>
-  <shared_objects_file/>
+  <shared_objects_file />
   <entries>
     <entry>
       <name>START</name>
-      <description/>
+      <description />
       <type>SPECIAL</type>
-      <attributes/>
+      <attributes />
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -306,36 +306,36 @@
       <nr>0</nr>
       <xloc>144</xloc>
       <yloc>480</yloc>
-      <attributes_kjc/>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Processa Dimensão Cliente</name>
-      <description/>
+      <description />
       <type>TRANS</type>
-      <attributes/>
+      <attributes />
       <specification_method>filename</specification_method>
-      <trans_object_id/>
+      <trans_object_id />
       <filename>${Internal.Entry.Current.Directory}/T_Cliente.ktr</filename>
-      <transname/>
+      <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <logfile />
+      <logext />
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name/>
+      <slave_server_name />
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -344,36 +344,36 @@
       <nr>0</nr>
       <xloc>416</xloc>
       <yloc>112</yloc>
-      <attributes_kjc/>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Processa Fato Vendas</name>
-      <description/>
+      <description />
       <type>TRANS</type>
-      <attributes/>
+      <attributes />
       <specification_method>filename</specification_method>
-      <trans_object_id/>
+      <trans_object_id />
       <filename>${Internal.Entry.Current.Directory}/T_FatoVendas.ktr</filename>
-      <transname/>
+      <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <logfile />
+      <logext />
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name/>
+      <slave_server_name />
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -381,37 +381,37 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>1008</xloc>
-      <yloc>112</yloc>
-      <attributes_kjc/>
+      <yloc>96</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Processa Dimensão Tempo Pedido</name>
-      <description/>
+      <description />
       <type>TRANS</type>
-      <attributes/>
+      <attributes />
       <specification_method>filename</specification_method>
-      <trans_object_id/>
+      <trans_object_id />
       <filename>${Internal.Entry.Current.Directory}/T_Tempo_Pedido.ktr</filename>
-      <transname/>
+      <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <logfile />
+      <logext />
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name/>
+      <slave_server_name />
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -420,36 +420,36 @@
       <nr>0</nr>
       <xloc>80</xloc>
       <yloc>288</yloc>
-      <attributes_kjc/>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Processa Dimensão Tempo Entrega</name>
-      <description/>
+      <description />
       <type>TRANS</type>
-      <attributes/>
+      <attributes />
       <specification_method>filename</specification_method>
-      <trans_object_id/>
+      <trans_object_id />
       <filename>${Internal.Entry.Current.Directory}/T_Tempo_Entrega.ktr</filename>
-      <transname/>
+      <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <logfile />
+      <logext />
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name/>
+      <slave_server_name />
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -458,36 +458,36 @@
       <nr>0</nr>
       <xloc>208</xloc>
       <yloc>112</yloc>
-      <attributes_kjc/>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Processa Dimensão Vendedor </name>
-      <description/>
+      <description />
       <type>TRANS</type>
-      <attributes/>
+      <attributes />
       <specification_method>filename</specification_method>
-      <trans_object_id/>
+      <trans_object_id />
       <filename>${Internal.Entry.Current.Directory}/T_Vendedor.ktr</filename>
-      <transname/>
+      <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <logfile />
+      <logext />
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name/>
+      <slave_server_name />
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -496,36 +496,36 @@
       <nr>0</nr>
       <xloc>544</xloc>
       <yloc>256</yloc>
-      <attributes_kjc/>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Processa Dimensão Tempo Expedição</name>
-      <description/>
+      <description />
       <type>TRANS</type>
-      <attributes/>
+      <attributes />
       <specification_method>filename</specification_method>
-      <trans_object_id/>
+      <trans_object_id />
       <filename>${Internal.Entry.Current.Directory}/T_Tempo_Expedicao.ktr</filename>
-      <transname/>
+      <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <logfile />
+      <logext />
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name/>
+      <slave_server_name />
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -534,36 +534,36 @@
       <nr>0</nr>
       <xloc>304</xloc>
       <yloc>240</yloc>
-      <attributes_kjc/>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Processa Dimensão Produto</name>
-      <description/>
+      <description />
       <type>TRANS</type>
-      <attributes/>
+      <attributes />
       <specification_method>filename</specification_method>
-      <trans_object_id/>
+      <trans_object_id />
       <filename>${Internal.Entry.Current.Directory}/T_Produto.ktr</filename>
-      <transname/>
+      <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <logfile />
+      <logext />
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name/>
+      <slave_server_name />
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -572,36 +572,36 @@
       <nr>0</nr>
       <xloc>720</xloc>
       <yloc>192</yloc>
-      <attributes_kjc/>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Processa Dimensão Transportadora</name>
-      <description/>
+      <description />
       <type>TRANS</type>
-      <attributes/>
+      <attributes />
       <specification_method>filename</specification_method>
-      <trans_object_id/>
+      <trans_object_id />
       <filename>${Internal.Entry.Current.Directory}/T_Transportadora.ktr</filename>
-      <transname/>
+      <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <logfile />
+      <logext />
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name/>
+      <slave_server_name />
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -610,7 +610,7 @@
       <nr>0</nr>
       <xloc>816</xloc>
       <yloc>48</yloc>
-      <attributes_kjc/>
+      <attributes_kjc />
     </entry>
   </entries>
   <hops>
@@ -689,5 +689,5 @@
   </hops>
   <notepads>
   </notepads>
-  <attributes/>
+  <attributes />
 </job>
