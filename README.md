@@ -2,7 +2,7 @@
 
 ## About this Project
 
-Data integration on the Northwind dataset. Conducted in the Business Intelligence discipline.
+Data integration on the Northwind dataset. Created in the Business Intelligence course.
 
 ## Getting Started
 
