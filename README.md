@@ -1,4 +1,12 @@
-# STEP's
+# ETL Northwind
+
+## About this Project
+
+Data integration on the Northwind dataset. Conducted in the Business Intelligence discipline.
+
+## Getting Started
+
+### Installing
 
 1. Clone this repository
 
